@@ -1,0 +1,46 @@
+body { 
+  font: 14px helvetica neue, helvetica, arial, sans-serif;
+}
+
+#cy {
+  height: 90%;
+  width: 70%;
+  position: absolute;
+  right: 2%;
+  top: 5%;
+
+  margin: auto;
+  border: 2px solid #C0C0C0;
+  align-self: center;
+}
+
+#info {
+  color: #c88;
+  font-size: 1em;
+  position: absolute;
+  z-index: -1;
+  left: 1em;
+  top: 1em;
+}
+
+.legend {
+  height: 10%;
+  width: 10%;
+  position: absolute;
+  left: 5%;
+  bottom: 100px;
+}
+
+#table {
+  height: 90%;
+  width: 82%;
+  position: absolute;
+  right: 0%;
+  top: 2%;
+
+  margin: auto;
+  border: 2px solid #C0C0C0;
+  align-self: center;
+}
+
+

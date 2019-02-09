@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- This code is for demonstration purposes only.  You should not hotlink to Github, Rawgit, or files from the Cytoscape.js documentation in your production apps. -->
+<html>
+  <head>
+    <meta name="description" content="[An example of getting started with Cytoscape.js]" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="nouislider.css" rel="stylesheet">
+    <meta charset=utf-8 />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <title>HIV Cluster 1</title>
+    <script type="text/javascript" src="data.js"></script> 
+    <script src="./js/cytoscape.min.js"></script>
+    <script src="./js/wNumb.js"></script>
+    <script src="./js/nouislider.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+  		<p id="slider" style="width: 300px; margin-top: 50px; "></p>
+  		Search ID: <input type="text" id="searchID">
+  	<button id="search" type="button" onclick="search(0)">Enter</button>
+  	<br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showRace()">Race</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showAge()">Age</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showSexOfBirth()">Sex of birth</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showGender()">Gender</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showDiagnosis()">Year of HIV diagnosis</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showStatus()">Diagnostic Status</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showAcute()">Acute Infection</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showTrans()">Transmission Risk</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showCare()">Care Status</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showViral()">Viral Suppression</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showTest()">Test Type</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showCollect()">Date Collected</button>
+    <br>
+    <br>
+    <button id="Cluster1" type="button" style="background-color: #d8d4d0" onclick="show1(this.id)">Cluster1</button>
+	<button id="Cluster2" type="button" style="background-color: #d8d4d0" onclick="show2(this.id)">Cluster2</button>
+	<button id="Cluster3" type="button" style="background-color: #d8d4d0" onclick="show3(this.id)">Cluster3</button>
+    <br>
+    <button id="Cluster4" type="button" style="background-color: #d8d4d0" onclick="show4(this.id)">Cluster4</button>
+	<button id="Cluster5" type="button" style="background-color: #d8d4d0" onclick="show5(this.id)">Cluster5</button>
+    <button id="Cluster6" type="button" style="background-color: #d8d4d0" onclick="show6(this.id)">Cluster6</button>
+    <br>
+    <button id="Cluster7" type="button" style="background-color: #d8d4d0" onclick="show7(this.id)">Cluster7</button>
+    <button id="Cluster8" type="button" style="background-color: #d8d4d0" onclick="show8(this.id)">Cluster8</button>
+    <button id="Cluster9" type="button" style="background-color: #d8d4d0" onclick="show9(this.id)">Cluster9</button>
+    <br>
+    <button id="Cluster10" type="button" style="background-color: #d8d4d0" onclick="show10(this.id)">Cluster10</button>
+    <button id="Cluster11" type="button" style="background-color: #d8d4d0" onclick="show11(this.id)">Cluster11</button>
+    <button id="Cluster12" type="button" style="background-color: #d8d4d0" onclick="show12(this.id)">Cluster12</button>
+    <br>
+    <button id="Cluster13" type="button" style="background-color: #d8d4d0" onclick="show13(this.id)">Cluster13</button>
+    <button id="Cluster14" type="button" style="background-color: #d8d4d0" onclick="show14(this.id)">Cluster14</button>
+    <button id="Cluster15" type="button" style="background-color: #d8d4d0" onclick="show15(this.id)">Cluster15</button>
+    <br>
+    <button id="Cluster16" type="button" style="background-color: #d8d4d0" onclick="show16(this.id)">Cluster16</button>
+    <button id="Cluster17" type="button" style="background-color: #d8d4d0" onclick="show17(this.id)">Cluster17</button>
+    <button id="Cluster18" type="button" style="background-color: #d8d4d0" onclick="show18(this.id)">Cluster18</button>
+    <br>
+    <button id="Cluster19" type="button" style="background-color: #d8d4d0" onclick="show19(this.id)">Cluster19</button>
+    <button id="Cluster20" type="button" style="background-color: #d8d4d0" onclick="show20(this.id)">Cluster20</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="showAll()">All</button>
+    <br>
+    <a target="_blank" href="summary.html">Summary</a>
+    <span id="cy" class="main"></span>
+    <!-- Load appplication code at the end to ensure DOM is loaded -->
+<br>
+<br>
+<br>
+<div id="title_cluster" style="font-weight: bold;"></div>
+<br>
+<div>
+	<div id="Menu1"></div>
+	<div id="Race" style="display: none;">
+		<header style="color: red">Non-Hispanic Black</header>
+		<header style="color: #ffa500">Non-Hispanic White</header>
+		<header style="color: green">Hispanic (any race)</header>
+		<header style="color: blue">Other</header>
+	</div>
+	<div id="Age group at diagnosis" style="display: none;">
+		<header style="color: red">age_grp1</header>
+		<header style="color: #ffa500">age_grp2</header>
+		<header style="color: green">age_grp3</header>
+		<header style="color: blue">age_grp4</header>
+		<header style="color: purple">age_grp5</header>
+		<header style="color: #631919">age_grp6</header>
+		<header style="color: #c3a880">age_grp7</header>
+	</div>
+	<div id="Sex of birth" style="display: none;">
+		<header style="color: red">Female</header>
+		<header style="color: blue">Male</header>
+	</div>
+	<div id="Gender" style="display: none;">
+		<header style="color: red">Female</header>
+		<header style="color: blue">Male</header>
+		<header style="color: green">Other</header>
+	</div>
+	<div id="Year of HIV diagnosis" style="display: none;">
+		<header style="color: red">2012</header>
+		<header style="color: #ffa500">2011</header>
+		<header style="color: green">2010</header>
+		<header style="color: blue">2009</header>
+		<header style="color: purple">2008</header>
+		<header style="color: #631919">2007</header>
+		<header style="color: #c3a880">2018</header>
+		<header style="color: #ff00ff">2017</header>
+		<header style="color: #605b57">2006</header>
+        <header style="color: #33334d">2016</header>
+        <header style="color: #990033">2015</header>
+        <header style="color: #006666">2004</header>
+        <header style="color: #333399">2014</header>
+        <header style="color: #336600">2013</header>
+	</div>
+	<div id="Diagnostic Status" style="display: none;">
+		<header style="color: red">Adult HIV</header>
+		<header style="color: #ffa500">Adult AIDS</header>
+		<header style="color: green">Unknown</header>
+		<header style="color: blue">Perinatal HIV</header>
+		<header style="color: purple">Perinatal AIDS</header>
+	</div>
+	<div id="Acute Infection" style="display: none;">
+		<header style="color: red">Yes</header>
+		<header style="color: blue">No</header>
+	</div>
+	<div id="Transmission Risk" style="display: none;">
+		<header style="color: red">MSM</header>
+		<header style="color: #ffa500">IDU</header>
+		<header style="color: green">MSM/IDU</header>
+		<header style="color: blue">Heterosexual</header>
+		<header style="color: purple">Other</header>
+	</div>
+	<div id="Care Status" style="display: none;">
+		<header style="color: red">Yes</header>
+		<header style="color: blue">No</header>
+	</div>
+	<div id="Viral Suppression" style="display: none;">
+		<header style="color: red">Yes</header>
+		<header style="color: blue">No</header>
+	</div>
+    <div id="Test Type" style="display: none;">
+        <header style="color: red">PR/RT/IN SEQ</header>
+        <header style="color: #ffa500">PR/RT SEQ</header>
+        <header style="color: green">RT SEQ</header>
+    </div>
+    <div id="Dt Collected" style="display: none;">
+        <header style="color: red">2018</header>
+        <header style="color: #ffa500">2017</header>
+        <header style="color: green">2016</header>
+        <header style="color: blue">2015</header>
+        <header style="color: purple">2014</header>
+        <header style="color: #631919">2013</header>
+        <header style="color: #c3a880">2012</header>
+        <header style="color: #ff00ff">2011</header>
+        <header style="color: #605b57">2010</header>
+    </div>
+</div>
+
+<div id="piechart" style="left: -2%; width: 28%; height: 40%; top: 55%; text-align: center;" hidden="true" class="legend"></div>
+    <script src="code.js"></script>
+  </body>
+</html>

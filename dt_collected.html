@@ -1,0 +1,73 @@
+<html>
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="nouislider.css" rel="stylesheet">
+    <script type="text/javascript" src="data.js"></script> 
+    <script src="./js/wNumb.js"></script>
+    <script src="./js/nouislider.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+  <div>
+  <div style="margin-left: 0px; width: 15%; display: inline-block;">
+    <form action="">
+      <p id="slider" style="width: 150px; margin-top: 50px; "></p>
+      <p>Cluster</p>
+      <input type="checkbox" id="1" onclick="getCluster();">Cluster 1<br>
+      <input type="checkbox" id="2" onclick="getCluster();">Cluster 2<br>
+      <input type="checkbox" id="3" onclick="getCluster();">Cluster 3<br>
+      <input type="checkbox" id="4" onclick="getCluster();">Cluster 4<br>
+      <input type="checkbox" id="5" onclick="getCluster();">Cluster 5<br>
+      <input type="checkbox" id="6" onclick="getCluster();">Cluster 6<br>
+      <input type="checkbox" id="7" onclick="getCluster();">Cluster 7<br>
+      <input type="checkbox" id="8" onclick="getCluster();">Cluster 8<br>
+      <input type="checkbox" id="9" onclick="getCluster();">Cluster 9<br>
+      <input type="checkbox" id="10" onclick="getCluster();">Cluster 10<br>
+      <input type="checkbox" id="11" onclick="getCluster();">Cluster 11<br>
+      <input type="checkbox" id="12" onclick="getCluster();">Cluster 12<br>
+      <input type="checkbox" id="13" onclick="getCluster();">Cluster 13<br>
+      <input type="checkbox" id="14" onclick="getCluster();">Cluster 14<br>
+      <input type="checkbox" id="15" onclick="getCluster();">Cluster 15<br>
+      <input type="checkbox" id="16" onclick="getCluster();">Cluster 16<br>
+      <input type="checkbox" id="17" onclick="getCluster();">Cluster 17<br>
+      <input type="checkbox" id="18" onclick="getCluster();">Cluster 18<br>
+      <input type="checkbox" id="19" onclick="getCluster();">Cluster 19<br>
+      <input type="checkbox" id="20" onclick="getCluster();">Cluster 20<br>
+      <input type="checkbox" id="selectAll" onclick="getAll(this);">Select All<br>
+    </form>
+
+<!--     <form>
+      <p>Category</p>
+      <input type="radio" name="cat" value="race">Race
+      <br>
+      <input type="radio" name="cat" value="age">Age
+      <br>
+      <input type="radio" name="cat" value="sob">Sex of Birth
+      <br>
+      <input type="radio" name="cat" value="gender">Gender
+      <br>
+      <input type="radio" name="cat" value="year">Year of HIV Diagnosis
+      <br>
+      <input type="radio" name="cat" value="ds">Diagnostic Status
+      <br>
+      <input type="radio" name="cat" value="ai">Acute Infection
+      <br>
+      <input type="radio" name="cat" value="tr">Transmission Risk
+      <br>
+      <input type="radio" name="cat" value="cs">Care Status
+      <br>
+      <input type="radio" name="cat" value="vs">Viral Suppression
+      <br>
+      <input type="radio" name="cat" value="tt">Test Type
+      <br>
+      <input type="radio" name="cat" value="dc">Date Collected
+      <br>
+      <input type="radio" name="cat" value="all">Select All
+    </form> -->
+    <button id="enter" onclick="drawStuff();">Enter</button>
+  </div>
+  <div style="display: inline-block; width: 65%" id="top_x_div"></div>
+  </div>
+  <script src="dt_collected.js"></script>
+</body>
+</html>

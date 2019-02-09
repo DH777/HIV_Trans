@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- This code is for demonstration purposes only.  You should not hotlink to Github, Rawgit, or files from the Cytoscape.js documentation in your production apps. -->
+<html>
+  <head>
+    <meta name="description" content="[An example of getting started with Cytoscape.js]" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="nouislider.css" rel="stylesheet">
+    <meta charset=utf-8 />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <title>Summary</title>
+    <script type="text/javascript" src="data.js"></script> 
+    <script src="./js/wNumb.js"></script>
+    <script src="./js/cytoscape.min.js"></script>
+    <script src="./js/nouislider.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+   	<!-- <script src="code.js"></script> -->
+   	<p id="slider" style="width: 200px; margin-top: 50px; "></p>
+  	<br>
+  	<br>
+  	<br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawRace()">Race</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawAge()">Age</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawSexOfBirth()">Sex of birth</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawGender()">Gender</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawDiagnosis()">Year of HIV diagnosis</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawStatus()">Diagnostic Status</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawAcute()">Acute Infection</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawTrans()">Transmission Risk</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawCare()">Care Status</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawViral()">Viral Suppression</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawTest()">Test Type</button>
+    <br>
+    <button type="button" style="background-color: #d8d4d0" onclick="drawCollect()">Date Collected</button>
+    <br>
+    <br>
+    <br>
+    <div>
+	<div id="Menu1"></div>
+    <div id="Race" style="display: none;">
+        <header style="color: red">Non-Hispanic Black</header>
+        <header style="color: #ffa500">Non-Hispanic White</header>
+        <header style="color: green">Hispanic (any race)</header>
+        <header style="color: blue">Other</header>
+    </div>
+    <div id="Age group at diagnosis" style="display: none;">
+        <header style="color: red">age_grp1</header>
+        <header style="color: #ffa500">age_grp2</header>
+        <header style="color: green">age_grp3</header>
+        <header style="color: blue">age_grp4</header>
+        <header style="color: purple">age_grp5</header>
+        <header style="color: #631919">age_grp6</header>
+        <header style="color: #c3a880">age_grp7</header>
+    </div>
+    <div id="Sex of birth" style="display: none;">
+        <header style="color: red">Female</header>
+        <header style="color: blue">Male</header>
+    </div>
+    <div id="Gender" style="display: none;">
+        <header style="color: red">Female</header>
+        <header style="color: blue">Male</header>
+        <header style="color: green">Other</header>
+    </div>
+    <div id="Year of HIV diagnosis" style="display: none;">
+        <header style="color: red">2012</header>
+        <header style="color: #ffa500">2011</header>
+        <header style="color: green">2010</header>
+        <header style="color: blue">2009</header>
+        <header style="color: purple">2008</header>
+        <header style="color: #631919">2007</header>
+        <header style="color: #c3a880">2018</header>
+        <header style="color: #ff00ff">2017</header>
+        <header style="color: #605b57">2006</header>
+        <header style="color: #33334d">2016</header>
+        <header style="color: #990033">2015</header>
+        <header style="color: #006666">2004</header>
+        <header style="color: #333399">2014</header>
+        <header style="color: #336600">2013</header>
+    </div>
+    <div id="Diagnostic Status" style="display: none;">
+        <header style="color: red">Adult HIV</header>
+        <header style="color: #ffa500">Adult AIDS</header>
+        <header style="color: green">Unknown</header>
+        <header style="color: blue">Perinatal HIV</header>
+        <header style="color: purple">Perinatal AIDS</header>
+    </div>
+    <div id="Acute Infection" style="display: none;">
+        <header style="color: red">Yes</header>
+        <header style="color: blue">No</header>
+    </div>
+    <div id="Transmission Risk" style="display: none;">
+        <header style="color: red">MSM</header>
+        <header style="color: #ffa500">IDU</header>
+        <header style="color: green">MSM/IDU</header>
+        <header style="color: blue">Heterosexual</header>
+        <header style="color: purple">Other</header>
+    </div>
+    <div id="Care Status" style="display: none;">
+        <header style="color: red">Yes</header>
+        <header style="color: blue">No</header>
+    </div>
+    <div id="Viral Suppression" style="display: none;">
+        <header style="color: red">Yes</header>
+        <header style="color: blue">No</header>
+    </div>
+    <div id="Test Type" style="display: none;">
+        <header style="color: red">PR/RT/IN SEQ</header>
+        <header style="color: #ffa500">PR/RT SEQ</header>
+        <header style="color: green">RT SEQ</header>
+    </div>
+    <div id="Dt Collected" style="display: none;">
+        <header style="color: red">2018</header>
+        <header style="color: #ffa500">2017</header>
+        <header style="color: green">2016</header>
+        <header style="color: blue">2015</header>
+        <header style="color: purple">2014</header>
+        <header style="color: #631919">2013</header>
+        <header style="color: #c3a880">2012</header>
+        <header style="color: #ff00ff">2011</header>
+        <header style="color: #605b57">2010</header>
+    </div>
+</div>
+    <!-- <span id="cy"></span> -->
+    <!-- Load appplication code at the end to ensure DOM is loaded -->
+	<table id="table" style="zoom: 85%">
+		<tr>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie1" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie2" ></div>
+        </td>
+         <td style="width: 200px; height: 200px">
+        	<div id="pie3" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie4" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie5" ></div>
+        </td>
+      </tr>
+      	<tr>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie6" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie7" ></div>
+        </td>
+         <td style="width: 200px; height: 200px">
+        	<div id="pie8" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie9" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie10" ></div>
+        </td>
+      </tr>
+        <tr>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie11" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie12" ></div>
+        </td>
+         <td style="width: 200px; height: 200px">
+        	<div id="pie13" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie14" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie15" ></div>
+        </td>
+      </tr>
+        <tr>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie16" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+        	<div id="pie17" ></div>
+        </td>
+         <td style="width: 200px; height: 200px">
+        	<div id="pie18" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+            <div id="pie19" ></div>
+        </td>
+        <td style="width: 200px; height: 200px">
+            <div id="pie20" ></div>
+        </td>
+      </tr>
+	</table>
+	<script src="sum.js"></script>
+  </body>
+</html>
